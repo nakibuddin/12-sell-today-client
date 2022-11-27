@@ -37,7 +37,7 @@ const Login = () => {
 					<div className="space-y-2">
 						<div className="flex justify-between">
 							<label htmlFor="password" className="text-sm">Password</label>
-							<a href='/' rel="noopener noreferrer" className="text-xs hover:underline  text-gray-400">Forgot password?</a>
+							{/* <a href='/' rel="noopener noreferrer" className="text-xs hover:underline  text-gray-400">Forgot password?</a> */}
 						</div>
 						<input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" />
 					</div>

@@ -14,7 +14,7 @@ const Navbar = () => {
               title="Company"
               className="inline-flex items-center"
             >
-              <img className='h-8 w-8' src="https://groups.drupal.org/files/Drupal-EDU-original.png" alt="" />
+              <img className='h-8 w-8 ' src="https://media.istockphoto.com/id/1254555114/vector/auto-car-logo-icon-vector-illustration-template-modern-sport-car-vector-logo-icon-silhouette.jpg?s=170667a&w=0&k=20&c=dka4o07ktUgNLt-P4AwhiL1WrmJgpR9hZzG3EemmG70=" alt="" />
               <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 ">
                 Sell Today
               </span>
@@ -34,19 +34,19 @@ const Navbar = () => {
 
               <li>
                 <NavLink
-                  to="/products" aria-label="Our product" title="Our product"
+                  to="/add-product" aria-label="Our product" title="Our product"
                   className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
                 >
-                  Products
+                  Add A Product
                 </NavLink>
               </li>
               
               <li>
                 <NavLink
-                  to="/price" aria-label="Product pricing" title="Product pricing"
+                  to="/blog" aria-label="Product pricing" title="Product pricing"
                   className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
                 >
-                  Pricing
+                  Blog
                 </NavLink>
               </li>
 
@@ -55,7 +55,7 @@ const Navbar = () => {
                   to="/about-us" aria-label="About us" title="About us"
                   className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
                 >
-                  About us
+                  Dashboard
                 </NavLink>
               </li>
             </ul>
