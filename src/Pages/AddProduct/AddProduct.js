@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
 
@@ -20,16 +22,34 @@ const AddProduct = () => {
         if(categoryName === 'Toyota'){
             categoryId = 1;
         }
-        else if(categoryName === 'Tata'){
-            categoryId = 2;
-        }
         else if(categoryName === 'Suzuki'){
             categoryId = 3;
         }
+        else if(categoryName === 'Tata'){
+            categoryId = 2;
+        }
+        
 
         const product = {name, image, categoryName, categoryId, condition, purchaseYear,
             purchasePrice, sellingPrice, description, mobile, location};
-        console.log(product);
+        // console.log(product);
+
+        fetch('http://localhost:5000/product', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(product),
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged === true){
+                toast.success('Product added successfully!', {
+                    position: toast.POSITION.TOP_CENTER });
+            }
+        })
+        .catch(err => console.error('my_fetch_error: ', err));
+        
     }
 
     return (
@@ -44,7 +64,7 @@ const AddProduct = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="image" className="block mb-1 ml-1">Product image</label>
+                    <label htmlFor="image" className="block mb-1 ml-1">Product image URL</label>
                     <input id="image" type="" placeholder="Product image" required className="border border-gray-700 block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400  bg-gray-800" />
                 </div>
 
