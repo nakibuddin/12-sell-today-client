@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);    
-    const isActiveTrue = "font-medium tracking-wide text-white ";
+    // const isActiveTrue = "font-medium tracking-wide text-white ";
+    const {user, logOut} = useContext(AuthContext);
+
+    const handleLogOut = () => {
+      logOut()
+      .then(() => {})
+      .catch(error => console.error('my_error: ', error));
+  }
 
     return (
       <div className="bg-gray-900 mb-[20px]">
@@ -62,27 +70,35 @@ const Navbar = () => {
 
 
             <ul className="flex items-center hidden space-x-1 lg:flex">
-              <li>
-                <img className='h-10 w-10 mx-2 border border-white rounded-[50%]' src="https://groups.drupal.org/files/Drupal-EDU-original.png" alt="" />
-              </li>
+              {
+                user?.uid && user?.photoURL &&
+                <li>
+                  <img className='h-10 w-10 mx-2 rounded-[50%]' src={user?.photoURL} alt="" />
+                </li>          
+              }              
               
-              <li>
-                <NavLink
-                  to="/login" aria-label="Log In" title="Log In"
-                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400 px-4' : 'text-white font-medium hover:text-orange-200 px-4' } 
-                >
-                  Login
-                </NavLink>
-              </li>
+              {
+                user?.uid ?
+                <li>
+                  <button
+                    aria-label="Log out" title="Log out"
+                    onClick={handleLogOut}
+                    className="font-medium tracking-wide text-white hover:text-orange-200 px-4"
+                  >
+                    Log out
+                  </button>
+                </li>               
+                :
+                <li>
+                  <NavLink
+                    to="/login" aria-label="Log In" title="Log In"
+                    className={ ({isActive}) => isActive ? 'font-medium text-orange-400 px-4' : 'text-white font-medium hover:text-orange-200 px-4' } 
+                  >
+                    Login
+                  </NavLink>
+                </li>
+              }
 
-              <li>
-                <NavLink
-                  to="/register" aria-label="Register" title="Register"
-                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400 px-4' : 'text-white font-medium hover:text-orange-200 px-4' } 
-                >
-                  Register
-                </NavLink>
-              </li>
             </ul>
 
 
