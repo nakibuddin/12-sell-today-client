@@ -52,7 +52,7 @@ const Navbar = () => {
 
               <li>
                 <NavLink
-                  to="/about-us" aria-label="About us" title="About us"
+                  to="/dashboard" aria-label="About us" title="About us"
                   className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
                 >
                   Dashboard
@@ -113,6 +113,8 @@ const Navbar = () => {
                   />
                 </svg>
               </button>
+             
+
               {isMenuOpen && (
                 <div className="absolute top-0 left-0 w-full">
                   <div className="p-5 bg-white border rounded shadow-sm">
