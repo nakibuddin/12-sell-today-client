@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
 	const {createUser, LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);
-    const [registerError, setRegisterError] = useState('');
+    const [registerError, setRegisterError] = useState(null);
     const navigate = useNavigate();
 	
 	const handleGoogleLogIn = () => {
@@ -16,6 +16,27 @@ const Register = () => {
         LogInWithGithub()
         .then(result => console.log(result.user))
         .catch(error => console.error('my_github_login_error: ', error));
+    }
+	const handleRegister = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        // const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, password);
+
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user);
+            event.target.reset();
+            navigate('/');
+            setRegisterError(null);
+        })
+        .catch(error => {
+            console.error('my_register_error: ', error);
+            setRegisterError(error.message);
+        });
     }
 
     return (
@@ -44,10 +65,8 @@ const Register = () => {
 				<p className="px-3  text-gray-400">OR</p>
 				<hr className="w-full  text-gray-400"/>
 			</div>
-			<form noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
+			<form onSubmit={handleRegister} noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
 				
-                
-                
                 <div className="space-y-4">
 
                     <div className="space-y-2">
@@ -73,10 +92,16 @@ const Register = () => {
                             <option value="saab">Seller</option>
                         </select>
                     </div>
-
+					{
+						registerError &&
+						<div>
+							<p className='text-red-600'>{registerError}</p>
+						</div>
+					}
+					
 				</div>
 
-
+				
 				<button type="submit" className="w-full px-8 py-3 font-semibold rounded-md  bg-violet-400  text-gray-900">Create an account</button>
 			</form>
 		</div>

@@ -71,9 +71,9 @@ const Navbar = () => {
 
             <ul className="flex items-center hidden space-x-1 lg:flex">
               {
-                user?.uid && user?.photoURL &&
+                user?.uid &&
                 <li>
-                  <img className='h-10 w-10 mx-2 rounded-[50%]' src={user?.photoURL} alt="" />
+                  <img className='h-10 w-10 mx-2 rounded-[50%] border border-white' src={user?.photoURL} alt="" />
                 </li>          
               }              
               

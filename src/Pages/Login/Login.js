@@ -19,7 +19,6 @@ const Login = () => {
         })
         .catch(error => console.error('my_google_login_error: ', error));
     }
-
 	const handleGithubLogIn = () => {
         LogInWithGithub()
         .then(result => {
@@ -27,6 +26,25 @@ const Login = () => {
             navigate(from, {replace: true});
         })
         .catch(error => console.error('my_github_login_error: ', error));
+    }
+	const handleLogIn = event => {
+        event.preventDefault();
+        const form = event.target;        
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+
+        logIn(email, password)
+        .then(result => {
+            console.log(result.user);
+            navigate(from, {replace: true});
+            setLoginError('');
+        })
+        .catch(error => {            
+            console.error('my_github_login_error: ', error);
+            setLoading(false);
+            setLoginError(error.message);
+        });
     }
 
     return (
@@ -55,21 +73,25 @@ const Login = () => {
 				<p className="px-3  text-gray-400">OR</p>
 				<hr className="w-full  text-gray-400"/>
 			</div>
-			<form noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
+			<form onSubmit={handleLogIn} noValidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
 				<div className="space-y-4">
 					<div className="space-y-2">
 						<label htmlFor="email" className="block text-sm">Email address</label>
-						<input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" />
+						<input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" required/>
 					</div>
 					<div className="space-y-2">
 						<div className="flex justify-between">
 							<label htmlFor="password" className="text-sm">Password</label>
 							{/* <a href='/' rel="noopener noreferrer" className="text-xs hover:underline  text-gray-400">Forgot password?</a> */}
 						</div>
-						<input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" />
+						<input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" required/>
 					</div>
+					<div>
+						<p className='text-red-600'>{loginError}</p>
+					</div>
+
 				</div>
-				<button type="button" className="w-full px-8 py-3 font-semibold rounded-md  bg-violet-400  text-gray-900">Log in</button>
+				<button type="submit" className="w-full px-8 py-3 font-semibold rounded-md  bg-violet-400  text-gray-900">Log in</button>
 			</form>
 		</div>
     );
