@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const AllSellers = () => {
+    const [sellers, setSellers] = useState([]);
+    let i=1;
+
+    useEffect(() => {
+        fetch('http://localhost:5000/users/seller')
+        .then(res => res.json())
+        .then(data => setSellers(data))
+        .catch(err => console.log('my_fetch_error: ', err));
+    },[])
+    
+    const handleDelete = id => {
+        
+    }
+
     return (
         <div className="overflow-x-auto">
             <table className="table w-full">
@@ -9,32 +23,23 @@ const AllSellers = () => {
                 <tr>
                     <th></th>
                     <th>Name</th>
-                    <th>Job</th>
-                    <th>Favorite Color</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                {/* <!-- row 1 --> */}
-                <tr>
-                    <th>1</th>
-                    <td>Cy Ganderton</td>
-                    <td>Quality Control Specialist</td>
-                    <td>Blue</td>
-                </tr>
-                {/* <!-- row 2 --> */}
-                <tr className="active">
-                    <th>2</th>
-                    <td>Hart Hagerty</td>
-                    <td>Desktop Support Technician</td>
-                    <td>Purple</td>
-                </tr>
-                {/* <!-- row 3 --> */}
-                <tr>
-                    <th>3</th>
-                    <td>Brice Swyre</td>
-                    <td>Tax Accountant</td>
-                    <td>Red</td>
-                </tr>
+                    {/* rows */}
+                {
+                    sellers.map(seller =>
+                    <tr key={seller._id}>
+                        <th>{i++}</th>
+                        <td>{seller?.name}</td>
+                        <td>{seller?.email}</td>
+                        <td>{seller?.role}</td>
+                        <td> <button onClick={() => handleDelete(seller?._id)} className='text-red-600 font-bold'> Delete </button> </td>
+                    </tr>)
+                }
                 </tbody>
             </table>
         </div>

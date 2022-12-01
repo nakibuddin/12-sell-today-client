@@ -58,14 +58,17 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              <li>
-                <NavLink
-                  to="/dashboard" aria-label="About us" title="About us"
-                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
-                >
-                  Dashboard
-                </NavLink>
-              </li>
+              {
+                // user?.uid &&
+                <li>
+                  <NavLink
+                    to="/dashboard" aria-label="About us" title="About us"
+                    className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+              }
             </ul>
 
 

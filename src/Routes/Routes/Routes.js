@@ -11,6 +11,7 @@ import Login from './../../Pages/Login/Login';
 import Dashboard from './../../Pages/Dashboard/Dashboard/Dashboard';
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
+import PrivateRoute from './../PrivateRoute/PrivateRoute';
 
 export const my_router = createBrowserRouter([
     {
@@ -27,7 +28,7 @@ export const my_router = createBrowserRouter([
             {
                 path: '/categories/:id', 
                 loader: async ({params}) => await fetch(`http://localhost:5000/categories/${params.id}`),
-                element: <Products></Products>
+                element: <PrivateRoute><Products></Products></PrivateRoute>
             },            
             {path: '*', element: <PageNotFound></PageNotFound>}
         ]
@@ -36,7 +37,7 @@ export const my_router = createBrowserRouter([
         path: '/dashboard',
         element: <DashboardLayout></DashboardLayout>,
         children: [
-            {path:'/dashboard', element: <Dashboard></Dashboard>},
+            {path:'/dashboard', element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>},
             {path:'/dashboard/all-sellers', element: <AllSellers></AllSellers>},
             {path:'/dashboard/all-buyers', element: <AllBuyers></AllBuyers>},
         ]
