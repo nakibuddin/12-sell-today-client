@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AllSellers = () => {
     // const [sellers, setSellers] = useState([]);
@@ -22,7 +24,20 @@ const AllSellers = () => {
     });
 
     const handleDelete = id => {
-        
+        const agree = window.confirm(`Are you sure you want to delete this seller ?`);
+        if(agree){
+            fetch(`http://localhost:5000/users/${id}`, {
+                method: 'delete',
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.deletedCount === 1){                                        
+                    toast('Seller deleted successfully.', {position: toast.POSITION.TOP_CENTER});                                         
+                    refetch();                                      
+                }
+            })
+            .catch(error =>  console.error('my_fetch_delete_error: ', error) );
+        }
     }
 
     return (
