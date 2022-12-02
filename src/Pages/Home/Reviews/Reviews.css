@@ -1,0 +1,15 @@
+/* video section css */
+.video_div1{
+    display: flex;
+    padding-left: 160px;
+    padding-bottom: 5px;    
+}
+.video_div2{
+    display: flex;
+    padding-left: 160px;
+}
+iframe{
+    margin-right: 5px;
+    /* border: 2px solid rgb(253, 92, 92); */
+    /* border: 2px solid black; */
+}
