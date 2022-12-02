@@ -39,15 +39,6 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
-              
-              <li>
-                <NavLink
-                  to="/blog" aria-label="Product pricing" title="Product pricing"
-                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
-                >
-                  Blog
-                </NavLink>
-              </li>
 
               {
                 // user?.uid &&
@@ -60,6 +51,25 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               }
+
+              <li>
+                <NavLink
+                  to="/blog" aria-label="Product pricing" title="Product pricing"
+                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
+                >
+                  Blog
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/contact" aria-label="Product pricing" title="Product pricing"
+                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
+                >
+                  Contact
+                </NavLink>
+              </li>
+
             </ul>
 
 

@@ -15,6 +15,7 @@ import PrivateRoute from './../PrivateRoute/PrivateRoute';
 import MyProducts from './../../Pages/Dashboard/MyProducts/MyProducts';
 import ReportedItems from './../../Pages/Dashboard/ReportedItems/ReportedItems';
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import Contact from "../../Pages/Contact/Contact";
 
 export const my_router = createBrowserRouter([
     {
@@ -26,6 +27,7 @@ export const my_router = createBrowserRouter([
             {path: '/home', element: <Home></Home>},
             {path: '/login', element: <Login></Login>},
             {path: '/register', element: <Register></Register>},
+            {path: '/contact', element: <Contact></Contact>},
             {path: '/blog', element: <Blog></Blog>},
             {
                 path: '/categories/:id', 
