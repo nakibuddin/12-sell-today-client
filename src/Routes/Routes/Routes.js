@@ -31,7 +31,7 @@ export const my_router = createBrowserRouter([
             {path: '/blog', element: <Blog></Blog>},
             {
                 path: '/categories/:id', 
-                loader: async ({params}) => await fetch(`http://localhost:5000/categories/${params.id}`),
+                loader: async ({params}) => await fetch(`https://12-sell-today-server.vercel.app/categories/${params.id}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
             },            
             {path: '*', element: <PageNotFound></PageNotFound>}
@@ -41,15 +41,15 @@ export const my_router = createBrowserRouter([
         path: '/dashboard',
         element: <DashboardLayout></DashboardLayout>,
         children: [
-            {path:'/dashboard', element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>},
-            {path:'/dashboard/all-sellers', element: <AllSellers></AllSellers>},
-            {path:'/dashboard/all-buyers', element: <AllBuyers></AllBuyers>},
-            {path:'/dashboard/reported-items', element: <ReportedItems></ReportedItems>},
+            {path:'/dashboard', element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>},
+            {path:'/dashboard/all-sellers', element: <PrivateRoute> <AllSellers></AllSellers> </PrivateRoute>},
+            {path:'/dashboard/all-buyers', element: <PrivateRoute> <AllBuyers></AllBuyers> </PrivateRoute>},
+            {path:'/dashboard/reported-items', element: <PrivateRoute> <ReportedItems></ReportedItems> </PrivateRoute>},
 
-            {path:'/dashboard/my-products', element: <MyProducts></MyProducts>},
-            {path: '/dashboard/add-product', element: <AddProduct></AddProduct>},
+            {path:'/dashboard/my-products', element: <PrivateRoute> <MyProducts></MyProducts> </PrivateRoute>},
+            {path: '/dashboard/add-product', element: <PrivateRoute> <AddProduct></AddProduct> </PrivateRoute>},
 
-            {path: '/dashboard/my-orders', element:<MyOrders></MyOrders> },
+            {path: '/dashboard/my-orders', element: <PrivateRoute> <MyOrders></MyOrders> </PrivateRoute> },
         ]
     }
 ])

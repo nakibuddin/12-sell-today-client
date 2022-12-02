@@ -6,7 +6,7 @@ const ReportedItems = () => {
 
     return (
         <div>
-            This is reported items
+            <h1 className='text-3xl text-center font-bold mt-16 mb-6'>Commimg soon...</h1>
         </div>
     );
 };
