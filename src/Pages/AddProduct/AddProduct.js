@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
     useTitle('Add a Product');
+    const {user} = useContext(AuthContext);  
+    const navigate = useNavigate();
 
     const handleAddProduct = event => {
         event.preventDefault();        
@@ -18,6 +22,8 @@ const AddProduct = () => {
         const description = event.target.description.value;        
         const mobile = event.target.mobile.value;        
         const location = event.target.location.value;
+        const email = user?.email;
+        const status = 'available';
         let categoryId = 1;
 
         
@@ -25,18 +31,20 @@ const AddProduct = () => {
             categoryId = 1;
         }
         else if(categoryName === 'Suzuki'){
-            categoryId = 3;
-        }
-        else if(categoryName === 'Tata'){
             categoryId = 2;
         }
+        else if(categoryName === 'Tata'){
+            categoryId = 3;
+        }
+        
+        
         
 
-        const product = {name, image, categoryName, categoryId, condition, purchaseYear,
+        const product = {categoryName, name, email, status, image, categoryId, condition, purchaseYear,
             purchasePrice, sellingPrice, description, mobile, location};
-        // console.log(product);
+        console.log(product);
 
-        fetch('https://12-sell-today-server.vercel.app/product', {
+        fetch('http://localhost:5000/product', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,8 +54,8 @@ const AddProduct = () => {
         .then(res => res.json())
         .then(data => {
             if(data.acknowledged === true){
-                toast.success('Product added successfully!', {
-                    position: toast.POSITION.TOP_CENTER });
+                toast.success('Product added successfully!', {position: toast.POSITION.TOP_CENTER });
+                navigate('/dashboard/my-products');
             }
         })
         .catch(err => console.error('my_fetch_error: ', err));

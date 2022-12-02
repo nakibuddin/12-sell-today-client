@@ -10,6 +10,6 @@ Live site link: [https://sell-today.web.app/](https://sell-today.web.app/).
 
 * This is a single page project, as we use react router, it fells a smooth transaction between traversal of the website.
 
-* This is second hand product selling platform. Here a seller can add his/her product for selling purpose, and a buyer can purchase product from this platform. User also can also report to any product.
+* This is a second hand product selling platform. Here a seller can add his/her product for selling purpose, and a buyer can purchase product from this platform. User also can also report to any product.
 
 

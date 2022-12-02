@@ -31,7 +31,7 @@ export const my_router = createBrowserRouter([
             {path: '/blog', element: <Blog></Blog>},
             {
                 path: '/categories/:id', 
-                loader: async ({params}) => await fetch(`https://12-sell-today-server.vercel.app/categories/${params.id}`),
+                loader: async ({params}) => await fetch(`http://localhost:5000/categories/${params.id}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
             },            
             {path: '*', element: <PageNotFound></PageNotFound>}
