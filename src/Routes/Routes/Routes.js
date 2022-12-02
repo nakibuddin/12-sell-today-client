@@ -12,6 +12,9 @@ import Dashboard from './../../Pages/Dashboard/Dashboard/Dashboard';
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import PrivateRoute from './../PrivateRoute/PrivateRoute';
+import MyProducts from './../../Pages/Dashboard/MyProducts/MyProducts';
+import ReportedItems from './../../Pages/Dashboard/ReportedItems/ReportedItems';
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 
 export const my_router = createBrowserRouter([
     {
@@ -24,10 +27,9 @@ export const my_router = createBrowserRouter([
             {path: '/login', element: <Login></Login>},
             {path: '/register', element: <Register></Register>},
             {path: '/blog', element: <Blog></Blog>},
-            {path: '/add-product', element: <AddProduct></AddProduct>},
             {
                 path: '/categories/:id', 
-                loader: async ({params}) => await fetch(`http://localhost:5000/categories/${params.id}`),
+                loader: async ({params}) => await fetch(`https://12-sell-today-server.vercel.app/categories/${params.id}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
             },            
             {path: '*', element: <PageNotFound></PageNotFound>}
@@ -40,6 +42,12 @@ export const my_router = createBrowserRouter([
             {path:'/dashboard', element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>},
             {path:'/dashboard/all-sellers', element: <AllSellers></AllSellers>},
             {path:'/dashboard/all-buyers', element: <AllBuyers></AllBuyers>},
+            {path:'/dashboard/reported-items', element: <ReportedItems></ReportedItems>},
+
+            {path:'/dashboard/my-products', element: <MyProducts></MyProducts>},
+            {path: '/dashboard/add-product', element: <AddProduct></AddProduct>},
+
+            {path: '/dashboard/my-orders', element:<MyOrders></MyOrders> },
         ]
     }
 ])

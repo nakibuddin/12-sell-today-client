@@ -39,15 +39,6 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
-
-              <li>
-                <NavLink
-                  to="/add-product" aria-label="Our product" title="Our product"
-                  className={ ({isActive}) => isActive ? 'font-medium text-orange-400' : 'text-white font-medium hover:text-orange-200' } 
-                >
-                  Add A Product
-                </NavLink>
-              </li>
               
               <li>
                 <NavLink
