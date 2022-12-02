@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
+import Footer from '../Pages/Shared/Footer/Footer';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 import './DashboardLayout.css';
 
@@ -29,6 +30,8 @@ const DashBoardLayout = () => {
                 
                 </div>
             </div>
+
+            <Footer></Footer>
 
         </div>
     );
