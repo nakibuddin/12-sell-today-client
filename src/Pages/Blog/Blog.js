@@ -1,6 +1,9 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const Blog = () => {
+    useTitle('Blog');
+
     return (
         <section className=" bg-gray-800  text-gray-100 md:mx-16 rounded-md">
             <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
@@ -18,7 +21,8 @@ const Blog = () => {
                     <details className="w-full border rounded-lg">
                         <summary className="cursor-pointer px-4 py-6 focus:outline-none focus-visible:ring-violet-400">What is a unit test? Why should we write unit tests?</summary>
                         <p className="px-4 py-6 pt-0 ml-4 -mt-4  text-gray-400">The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages. </p>
-                    </details>
+                    </details>import useTitle from './../../hooks/useTitle';
+
                     <details className="w-full border rounded-lg">
                         <summary className="cursor-pointer px-4 py-6 focus:outline-none focus-visible:ring-violet-400">React vs. Angular vs. Vue?</summary>
                         <p className="px-4 py-6 pt-0 ml-4 -mt-4  text-gray-400">There are three frameworks for building web applications that every frontend developer has heard about: React, Vue.js, and Angular.

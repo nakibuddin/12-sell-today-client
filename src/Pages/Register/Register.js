@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from './../../hooks/useTitle';
 
 const Register = () => {
 	const {createUser, LogInWithGoogle, LogInWithGithub} = useContext(AuthContext);
     const [registerError, setRegisterError] = useState(null);
     const navigate = useNavigate();
+	useTitle('Register');
 	
 	const handleGoogleLogIn = () => {
         LogInWithGoogle()
