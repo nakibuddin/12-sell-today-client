@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import car from '../../../assets/car.png'
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);    
@@ -15,14 +16,14 @@ const Navbar = () => {
 
     return (
       <div className="bg-gray-900 mb-[20px]">
-        <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div className="px-4 py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between">
             <Link
               to="/" aria-label="Company"
               title="Company"
               className="inline-flex items-center"
             >
-              <img className='h-8 w-8 ' src="https://media.istockphoto.com/id/1254555114/vector/auto-car-logo-icon-vector-illustration-template-modern-sport-car-vector-logo-icon-silhouette.jpg?s=170667a&w=0&k=20&c=dka4o07ktUgNLt-P4AwhiL1WrmJgpR9hZzG3EemmG70=" alt="" />
+              <img className='h-14 w-14 ' src={car} alt="" />
               <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 ">
                 Sell Today
               </span>
