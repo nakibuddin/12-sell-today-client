@@ -1,4 +1,4 @@
-# Project Name: Edu Expert
+# Project Name: Sell Today
 
 Live site link: [https://sell-today.web.app/](https://sell-today.web.app/).
 

@@ -16,6 +16,25 @@ import MyProducts from './../../Pages/Dashboard/MyProducts/MyProducts';
 import ReportedItems from './../../Pages/Dashboard/ReportedItems/ReportedItems';
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import Contact from "../../Pages/Contact/Contact";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
+
+
+
+import React from 'react';
+
+const Routes = () => {
+    const {user} = useContext(AuthContext);  
+    const email = user?.email;
+    
+    return (
+        <div>
+            
+        </div>
+    );
+};
+
+export default Routes;
 
 export const my_router = createBrowserRouter([
     {
@@ -31,7 +50,7 @@ export const my_router = createBrowserRouter([
             {path: '/blog', element: <Blog></Blog>},
             {
                 path: '/categories/:id', 
-                loader: async ({params}) => await fetch(`https://12-sell-today-server.vercel.app/categories/${params.id}`),
+                loader: async ({params}) => await fetch(`http://localhost:5000/categories/${params.id}`),
                 element: <PrivateRoute><Products></Products></PrivateRoute>
             },            
             {path: '*', element: <PageNotFound></PageNotFound>}
@@ -46,7 +65,7 @@ export const my_router = createBrowserRouter([
             {path:'/dashboard/all-buyers', element: <PrivateRoute> <AllBuyers></AllBuyers> </PrivateRoute>},
             {path:'/dashboard/reported-items', element: <PrivateRoute> <ReportedItems></ReportedItems> </PrivateRoute>},
 
-            {path:'/dashboard/my-products', element: <PrivateRoute> <MyProducts></MyProducts> </PrivateRoute>},
+            {path:'/dashboard/my-products', element:  <MyProducts></MyProducts>},
             {path: '/dashboard/add-product', element: <PrivateRoute> <AddProduct></AddProduct> </PrivateRoute>},
 
             {path: '/dashboard/my-orders', element: <PrivateRoute> <MyOrders></MyOrders> </PrivateRoute> },

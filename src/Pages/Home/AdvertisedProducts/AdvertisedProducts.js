@@ -5,7 +5,7 @@ const AdvertisedProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://12-sell-today-server.vercel.app/advertise')
+        fetch('http://localhost:5000/advertise')
         .then(res => res.json())
         .then(data => setProducts(data))
         .catch(err => console.error('my_fetch_error: ', err));

@@ -14,9 +14,9 @@ const MyProducts = () => {
     let i=1;
 
     const {data: products = [], refetch} = useQuery({
-        queryKey: ['products'],
+        queryKey: ['products', user?.email],
         queryFn: async() =>{
-            const res = await fetch(`https://12-sell-today-server.vercel.app/products/${email}`);
+            const res = await fetch(`http://localhost:5000/products/${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -25,7 +25,7 @@ const MyProducts = () => {
     const handleDelete = id => {
         const agree = window.confirm(`Are you sure you want to delete this product ?`);
         if(agree){
-            fetch(`https://12-sell-today-server.vercel.app/products/${id}`, {
+            fetch(`http://localhost:5000/products/${id}`, {
                 method: 'delete',
             })
             .then(res => res.json())
@@ -40,7 +40,7 @@ const MyProducts = () => {
     }
 
     const handleAdvertise = product => {
-        fetch('https://12-sell-today-server.vercel.app/advertise', {
+        fetch('http://localhost:5000/advertise', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
